@@ -1,0 +1,61 @@
+@import 'normalize.css';
+
+:root {
+    --primary: #D70018;
+    --black: #000;
+    --white: #fff;
+    --text-color: #444;
+    --font-family: "Roboto", sans-serif;
+
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: 1.6rem;
+    line-height: 1.5;
+    text-rendering: optimizespeed;
+    color: var(--text-color);
+    overflow-y: overlay;
+}
+
+button,
+input {
+    outline: none;
+    border: none;
+}
+
+ul {
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+header, footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+}
