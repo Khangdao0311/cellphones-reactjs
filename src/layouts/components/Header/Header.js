@@ -6,6 +6,7 @@ import 'swiper/css/navigation';
 import classNames from 'classnames/bind';
 
 import styles from './Header.module.scss';
+import images from '~/assets/images';
 
 const cx = classNames.bind(styles);
 
@@ -14,7 +15,10 @@ function Header() {
         <header id={cx('header')}>
             <div className={cx('benner')}>
                 <Swiper
-                    className={cx('container')}
+                    style={{
+                        width: '90%',
+                        maxWidth: '1200px',
+                    }}
                     modules={[Autoplay, Navigation]}
                     autoplay={{
                         delay: 3000,
@@ -49,9 +53,9 @@ function Header() {
                     </SwiperSlide>
                 </Swiper>
             </div>
-            <div className={cx('header')}>
-                <div className={cx('container')}>
-                    <h2>Header</h2>
+            <div className={cx('container')}>
+                <div className={cx('logo-box')}>
+                    <img src={images.logo} alt="logo" className={cx('logo')}/>
                 </div>
             </div>
         </header>
