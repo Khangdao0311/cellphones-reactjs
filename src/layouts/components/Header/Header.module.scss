@@ -1,5 +1,25 @@
+#header {
+    display: flex;
+    flex-direction: column;
+}
+
+.benner {
+    background-color: #e9efff;
+    max-height: 40px;
+    overflow: hidden;
+    padding: 5px;
+}
+
 .container {
     width: 90%;
     max-width: 1200px;
-    background-color: aqua;
+    margin: 0 auto;
+
+    img {
+        border-radius: 50px;
+        display: block;
+        margin: auto;
+        min-height: 30px;
+        user-select: none;
+    }
 }
