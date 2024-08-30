@@ -4,6 +4,22 @@ const routes = {
     login: '/login',
     register: '/register',
     cart: '/cart',
+    dienThoai: '/dien-thoai',
+    tablet: '/tablet',
+    laptop: '/laptop',
+    amThanh: '/am-thanh',
+    dongHo: '/dong-ho',
+    camera: '/camera',
+    doGiaDung: '/do-gia-dung',
+    phuKien: '/phu-kien',
+    pc: '/pc',
+    manHinh: '/man-hinh',
+    mayIn: '/may-in',
+    tivi: '/tivi',
+    thuCuDoiMoi: '/thu-cu-doi-moi',
+    hangCu: '/hang-cu',
+    khuyenMai: '/khuyen-mai',
+    tinCongNghe: '/tin-cong-nghe',
 };
 
 export default routes;

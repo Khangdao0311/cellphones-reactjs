@@ -1,0 +1,36 @@
+.menu-children {
+    position: absolute;
+    top: 0;
+    left: 220px;
+    width: calc(100% - 220px);
+    min-height: 375px;
+    padding: 5px 15px 15px;
+    z-index: 10;
+    border-radius: 0 10px 10px 10px;
+    background-color: #FFF;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.title {
+    font-size: 14px;
+    color: #363636;
+    font-weight: 700;
+}
+
+.content {
+    display: flex;
+
+    span {
+        color: #707070;
+        font-size: 13px;
+
+        &:hover {
+            color: var(--primary);
+        }
+    }
+}

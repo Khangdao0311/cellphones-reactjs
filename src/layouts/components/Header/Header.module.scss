@@ -1,7 +1,9 @@
 #header {
+    position: relative;
     display: flex;
     flex-direction: column;
     background-color: var(--primary);
+    z-index: 10 !important;
 }
 
 .benner {
@@ -19,7 +21,8 @@
     }
 }
 
-.container {
+.nav-container {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -44,6 +47,7 @@
 
 //button
 .button {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 5px;
@@ -54,6 +58,8 @@
     background-color: #ffffff33;
     color: var(--white);
     font-size: 12px;
+    user-select: none;
+
 
     &.bg-none {
         background-color: transparent;
@@ -62,6 +68,7 @@
     &:hover {
         background-color: #ffffff33;
     }
+
     .icon {
         width: 24px;
         height: auto;
@@ -74,6 +81,17 @@
             display: flex;
             align-items: center;
         }
+    }
+
+    .itemsInCart {
+        position: absolute;
+        left: 10%;
+        top: 50%;
+        display: flex;
+        justify-content: center;
+        width: 20px;
+        font-size: 12px;
+        transform: translateY(-30%);
     }
 
     &.buttonColumn {
@@ -120,7 +138,7 @@
         padding: 5px 20px 5px 6px;
         width: 100%;
 
-        &:not(:placeholder-shown) ~ .clear {
+        &:not(:placeholder-shown)~.clear {
             display: flex;
         }
     }
@@ -137,8 +155,36 @@
         background-color: #FFF;
 
         .icon {
-            width: 15px;
-            height: 20px;
+            width: 14px;
+            height: 14px;
+            cursor: pointer;
         }
     }
+}
+
+//menu 
+.menu {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    top: 70px;
+
+    &.active {
+        display: block;
+    }
+
+    .container {
+        width: 100%;
+        height: auto;
+    }
+}   
+
+.lable {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(0,0,0,.45);
+    z-index: 1;
 }
