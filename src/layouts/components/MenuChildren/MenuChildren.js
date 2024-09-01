@@ -8,8 +8,6 @@ import styles from './MenuChildren.module.scss';
 const cx = classNames.bind(styles);
 
 function MenuChildren({ data }) {
-    console.log(data);
-
     return (
         <Swiper
             className={cx('menu-children')}

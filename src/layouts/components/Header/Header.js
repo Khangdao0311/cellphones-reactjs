@@ -1,8 +1,6 @@
-import React, { Fragment, useCallback, useState } from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-// import Tippy from '@tippyjs/react';
-// import HeadlessTippy from '@tippyjs/react/headless';
-// import 'tippy.js/dist/tippy.css';
+import classNames from 'classnames/bind';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper/modules';
 import 'swiper/css';
@@ -16,21 +14,25 @@ import { LiaPhoneSolid, LiaShippingFastSolid } from 'react-icons/lia';
 import { HiOutlineUserCircle } from 'react-icons/hi2';
 import { BsBag } from 'react-icons/bs';
 
-import classNames from 'classnames/bind';
-
 import styles from './Header.module.scss';
 import images from '~/assets/images';
 import config from '~/config';
 import Menu from '~/layouts/components/Menu';
+import Local from '~/layouts/components/Local';
+import { useStore, actions } from '~/store';
 
 const cx = classNames.bind(styles);
 
 function Header() {
-    const [check, setCheck] = useState('');
+    const [state, dispatch] = useStore();
 
-    const handleMenu = useCallback(() => {
-        !check ? setCheck('active') : setCheck('');
-    }, [check]);
+    const handleMenu = () => {
+        dispatch(actions.setShowMenu());
+    };
+
+    const handleLocal = () => {
+        dispatch(actions.setShowLocal());
+    };
 
     return (
         <Fragment>
@@ -83,18 +85,16 @@ function Header() {
                         <CiViewList className={cx('icon')} />
                         <div className={cx('content')}>Danh mục</div>
                     </button>
-
-                    <div className={cx('menu', check)}>
+                    <div className={cx('menu', state.check.menu ? 'active' : '')}>
                         <div className={cx('container')}>
                             <Menu />
                         </div>
                     </div>
-
-                    <button className={cx('button')}>
+                    <button className={cx('button')} onClick={handleLocal}>
                         <RiMapPinLine className={cx('icon')} />
                         <div className={cx('content')}>
                             Xem giá tại <IoIosArrowDown /> <br />
-                            <span style={{ fontSize: 14 }}>Hồ Chí Minh</span>
+                            <span style={{ fontSize: 14 }}>{state.local.name}</span>
                         </div>
                     </button>
                     <div className={cx('search')}>
@@ -137,7 +137,13 @@ function Header() {
                     </button>
                 </div>
             </header>
-            {!!check && <div className={cx('lable')} onClick={handleMenu}></div>}
+            {!!state.check.menu && <div className={cx('lable')} onClick={handleMenu}></div>}
+            {!!state.check.local && (
+                <Fragment>
+                    <Local />
+                    <div className={cx('lable')} onClick={handleLocal}></div>
+                </Fragment>
+            )}
         </Fragment>
     );
 }
