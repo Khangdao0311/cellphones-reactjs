@@ -1,0 +1,232 @@
+//search
+.search {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 34px;
+    background-color: #fff;
+    border-radius: 10px;
+    // overflow: hidden;
+
+    .button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 20px;
+        height: 100%;
+        color: #707070;
+        padding: 0 0 0 6px;
+        background-color: transparent;
+
+        .icon {
+            width: 15px;
+            height: 19px;
+        }
+
+    }
+
+    .input {
+        border: 0;
+        border-radius: 0 10px 10px 0;
+        font-size: 16px;
+        height: 34px;
+        outline: none;
+        padding: 5px 20px 5px 6px;
+        width: 100%;
+    }
+
+    .clear {
+        position: absolute;
+        right: 0px;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        width: 20px;
+        height: 100%;
+        color: #707070;
+        background-color: transparent;
+        z-index: 5;
+
+        .icon {
+            width: 14px;
+            height: 14px;
+            cursor: pointer;
+        }
+    }
+}
+
+.result {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100vw;
+    max-width: 400px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+
+    .find-name,
+    .find-product {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .title {
+        background-color: #f3f3f3;
+        padding: 5px 10px;
+    }
+
+    .list {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .item {
+        padding: 5px 10px;
+        color: #7d7d7d;
+        display: flex;
+
+        &:hover {
+            background-color: #f0f0f0;
+        }
+    }
+
+    .image {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+    }
+
+    .info {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .name {
+        color: #000;
+        font-size: 12px;
+        font-weight: 600
+    }
+
+    .price {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .price-main {
+        color: #db003b;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .price-sub {
+        color: #777;
+        font-size: 12px;
+    }
+}
+
+.suggest {
+    position: absolute;
+    left: 0;
+    top: 50px;
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    width: 100vw;
+    border-radius: 8px;
+    background: #fff;
+
+    &::after {
+        content: "";
+        position: absolute;
+        left: 15%;
+        top: -30px;
+        border: 15px solid transparent;
+        border-bottom-color: #fff;
+    }
+
+    .benner {
+        padding: 5px;
+        display: flex;
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    }
+
+    .history,
+    .trending {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .title,
+    .clearAll {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        padding: 10px 10px 5px;
+    }
+
+    .clearAll {
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .content {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .history .item {
+        width: 100%;
+        padding: 5px 10px;
+        color: #86888d;
+        font-size: 14px;
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .trending .item {
+        width: 50%;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        .image {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+        }
+
+        .name {
+            color: #0c011c;
+            font-size: 14px;
+        }
+    }
+
+
+
+
+
+
+}

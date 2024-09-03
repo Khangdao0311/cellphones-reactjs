@@ -8,8 +8,6 @@ import 'swiper/css/navigation';
 import { CiViewList } from 'react-icons/ci';
 import { IoIosArrowDown } from 'react-icons/io';
 import { RiMapPinLine } from 'react-icons/ri';
-import { FaSearch } from 'react-icons/fa';
-import { FaXmark } from 'react-icons/fa6';
 import { LiaPhoneSolid, LiaShippingFastSolid } from 'react-icons/lia';
 import { HiOutlineUserCircle } from 'react-icons/hi2';
 import { BsBag } from 'react-icons/bs';
@@ -17,6 +15,7 @@ import { BsBag } from 'react-icons/bs';
 import styles from './Header.module.scss';
 import images from '~/assets/images';
 import config from '~/config';
+import Search from './Search';
 import Menu from '~/layouts/components/Menu';
 import Local from '~/layouts/components/Local';
 import { useStore, actions } from '~/store';
@@ -97,15 +96,7 @@ function Header() {
                             <span style={{ fontSize: 14 }}>{state.local.name}</span>
                         </div>
                     </button>
-                    <div className={cx('search')}>
-                        <button className={cx('button')}>
-                            <FaSearch className={cx('icon')} />
-                        </button>
-                        <input className={cx('input')} type="text" placeholder="Bạn cần tìm gì ?" />
-                        <button className={cx('clear')}>
-                            <FaXmark className={cx('icon')} />
-                        </button>
-                    </div>
+                    <Search />
                     <button className={cx('button', 'bg-none')}>
                         <LiaPhoneSolid className={cx('icon')} />
                         <div className={cx('content')}>
@@ -143,6 +134,16 @@ function Header() {
                     <Local />
                     <div className={cx('lable')} onClick={handleLocal}></div>
                 </Fragment>
+            )}
+            {(!!state.check.search.result || !!state.check.search.suggest) && (
+                <div
+                    className={cx('lable')}
+                    onClick={() => {
+                        dispatch(actions.setSearchValue(''));
+                        dispatch(actions.setSearchSuggest(false));
+                        dispatch(actions.setSearchResult(false));
+                    }}
+                ></div>
             )}
         </Fragment>
     );

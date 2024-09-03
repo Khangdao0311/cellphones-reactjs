@@ -1,14 +1,26 @@
-import { SET_LOCAL, SET_SHOW_LOCAL, SET_SHOW_MENU } from './constants';
+import {
+    SET_LOCAL,
+    SET_SHOW_LOCAL,
+    SET_SHOW_MENU,
+    SET_SEARCH_RESULT,
+    SET_SEARCH_SUGGEST,
+    SET_SEARCH_VALUE,
+} from './constants';
 
 const initState = {
     check: {
         menu: false,
         local: false,
+        search: {
+            result: false,
+            suggest: false,
+        },
     },
     local: {
         id: 1,
         name: 'Hồ Chí Minh',
     },
+    search: '',
 };
 
 function reduce(state, action) {
@@ -33,6 +45,34 @@ function reduce(state, action) {
             return {
                 ...state,
                 local: action.payload,
+            };
+        case SET_SEARCH_RESULT:
+            return {
+                ...state,
+                check: {
+                    ...state.check,
+                    search: {
+                        result: action.payload,
+                        suggest: false,
+                    },
+                },
+            };
+
+        case SET_SEARCH_SUGGEST:
+            return {
+                ...state,
+                check: {
+                    ...state.check,
+                    search: {
+                        result: false,
+                        suggest: action.payload,
+                    },
+                },
+            };
+        case SET_SEARCH_VALUE:
+            return {
+                ...state,
+                search: action.payload,
             };
         default:
             break;
