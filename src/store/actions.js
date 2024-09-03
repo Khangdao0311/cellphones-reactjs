@@ -5,6 +5,8 @@ import {
     SET_SEARCH_RESULT,
     SET_SEARCH_SUGGEST,
     SET_SEARCH_VALUE,
+    SET_SHOW_MODAL_LOGIN,
+    SET_SHOW_NOTI,
 } from './constants';
 
 export const setShowMenu = (payload) => ({
@@ -29,5 +31,13 @@ export const setSearchSuggest = (payload) => ({
 });
 export const setSearchValue = (payload) => ({
     type: SET_SEARCH_VALUE,
+    payload,
+});
+export const setShowModalLogin = (payload) => ({
+    type: SET_SHOW_MODAL_LOGIN,
+    payload,
+});
+export const setShowNoti = (payload) => ({
+    type: SET_SHOW_NOTI,
     payload,
 });

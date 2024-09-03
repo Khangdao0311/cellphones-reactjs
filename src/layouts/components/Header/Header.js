@@ -11,6 +11,7 @@ import { RiMapPinLine } from 'react-icons/ri';
 import { LiaPhoneSolid, LiaShippingFastSolid } from 'react-icons/lia';
 import { HiOutlineUserCircle } from 'react-icons/hi2';
 import { BsBag } from 'react-icons/bs';
+import { FaXmark, FaChevronRight } from 'react-icons/fa6';
 
 import styles from './Header.module.scss';
 import images from '~/assets/images';
@@ -31,6 +32,16 @@ function Header() {
 
     const handleLocal = () => {
         dispatch(actions.setShowLocal());
+    };
+
+    const hasUser = localStorage.getItem('user');
+
+    const handleModal = () => {
+        if (hasUser) {
+            dispatch(actions.setShowNoti());
+        } else {
+            dispatch(actions.setShowModalLogin());
+        }
     };
 
     return (
@@ -115,17 +126,48 @@ function Header() {
                             Tra cứu <br /> đơn hàng
                         </div>
                     </button>
-                    <Link to={config.routes.cart} className={cx('button', 'bg-none')}>
+                    <Link to={hasUser ? config.routes.cart : ''} onClick={!hasUser ? handleModal : ''} className={cx('button', 'bg-none')}>
                         <BsBag className={cx('icon')} />
                         <div className={cx('content')}>
                             Giỏ <br /> hàng
                             <span className={cx('itemsInCart')}>0</span>
                         </div>
                     </Link>
-                    <button className={cx('button', 'buttonColumn')}>
+                    <button className={cx('button', 'buttonColumn')} onClick={handleModal}>
                         <HiOutlineUserCircle className={cx('icon')} />
                         <div className={cx('content')}>Đăng nhập</div>
                     </button>
+                    {!!state.check.noti && (
+                        <div className={cx('noti')}>
+                            <div className={cx('head')}>
+                                <div className={cx('box')}>
+                                    <div className={cx('access')}>
+                                        <img
+                                            src="https://static.cellphones.com.vn/img/smember.ab0728d.svg"
+                                            alt="smumber"
+                                        />
+                                        <span>Truy cập Smember</span>
+                                    </div>
+                                    <FaChevronRight />
+                                </div>
+                            </div>
+                            <div className={cx('body')}>
+                                <div className={cx('title')}>Thông báo</div>
+                                <div className={cx('list')}>
+                                    <div className={cx('empty')}>
+                                        <img src="https://static.cellphones.com.vn/img/empty.e7af47f.svg" alt="empty" />
+                                        <div className={cx('textBox')}>
+                                            <strong>Ở đây hơi trống trải.</strong>
+                                            <span>S-Ant sẽ gửi cho bạn những thông báo mới nhất tại đây nhé!</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button className={cx('foot')} onClick={handleModal}>
+                                Đóng
+                            </button>
+                        </div>
+                    )}
                 </div>
             </header>
             {!!state.check.menu && <div className={cx('lable')} onClick={handleMenu}></div>}
@@ -140,11 +182,35 @@ function Header() {
                     className={cx('lable')}
                     onClick={() => {
                         dispatch(actions.setSearchValue(''));
-                        dispatch(actions.setSearchSuggest(false));
                         dispatch(actions.setSearchResult(false));
                     }}
                 ></div>
             )}
+            {!!state.check.modalLogin && (
+                <Fragment>
+                    <div className={cx('modal-login')}>
+                        <div className={cx('title')}>
+                            Smember
+                            <img
+                                src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:80/q:90/plain/https://cellphones.com.vn/media/wysiwyg/chibi2.png"
+                                alt="summer-icon"
+                            />
+                        </div>
+                        <div className={cx('text')}>
+                            Vui lòng đăng nhập tài khoản Smember để xem ưu đãi và thanh toán dễ dàng hơn.
+                        </div>
+                        <div className={cx('group-button')}>
+                            <button className={cx('register')}>Đăng ký</button>
+                            <button className={cx('login')}>Đăng nhập</button>
+                        </div>
+                        <button className={cx('close')} onClick={handleModal}>
+                            <FaXmark />
+                        </button>
+                    </div>
+                    <div className={cx('lable')} onClick={handleModal}></div>
+                </Fragment>
+            )}
+            {!!state.check.noti && <div className={cx('lable')} onClick={handleModal}></div>}
         </Fragment>
     );
 }

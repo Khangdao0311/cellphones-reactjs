@@ -5,6 +5,8 @@ import {
     SET_SEARCH_RESULT,
     SET_SEARCH_SUGGEST,
     SET_SEARCH_VALUE,
+    SET_SHOW_MODAL_LOGIN,
+    SET_SHOW_NOTI,
 } from './constants';
 
 const initState = {
@@ -15,6 +17,8 @@ const initState = {
             result: false,
             suggest: false,
         },
+        modalLogin: false,
+        noti: false,
     },
     local: {
         id: 1,
@@ -73,6 +77,22 @@ function reduce(state, action) {
             return {
                 ...state,
                 search: action.payload,
+            };
+        case SET_SHOW_MODAL_LOGIN:
+            return {
+                ...state,
+                check: {
+                    ...state.check,
+                    modalLogin: state.check.modalLogin ? false : true,
+                },
+            };
+        case SET_SHOW_NOTI:
+            return {
+                ...state,
+                check: {
+                    ...state.check,
+                    noti: state.check.noti ? false : true,
+                },
             };
         default:
             break;
