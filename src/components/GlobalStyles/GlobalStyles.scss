@@ -19,7 +19,7 @@
 html {
     font-size: 62.5%;
     color: #333;
-    line-height: 1.5; 
+    line-height: 1.5;
 }
 
 body {
@@ -56,3 +56,26 @@ main {
     justify-content: center;
     border-radius: 8px;
 }
+
+.is-flex {
+    display: flex !important;
+}
+
+.is-flex-direction-colum {
+    flex-direction: column !important;
+}
+
+.is-align-items-center {
+    align-items: center !important;
+}
+
+.is-justify-content-center {
+    justify-content: center !important;
+}
+
+.is-justify-content-space-between {
+    justify-content: space-between !important;
+}
+
+
+
