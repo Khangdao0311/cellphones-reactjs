@@ -50,15 +50,14 @@ function Header() {
                 <div className={cx('benner')}>
                     <Swiper
                         style={{
-                            width: '90%',
-                            maxWidth: '1200px',
+                            '--swiper-navigation-color': '#030c65D',
                         }}
+                        className="container"
                         modules={[Autoplay, Navigation]}
                         autoplay={{
                             delay: 3000,
                         }}
                         slidesPerView={3}
-                        // loop={true}
                         navigation
                     >
                         <SwiperSlide>
@@ -88,8 +87,8 @@ function Header() {
                     </Swiper>
                 </div>
                 <div className={cx('nav-container')}>
-                    <Link to={config.routes.home} className={cx('logo-box')}>
-                        <img src={images.logo} alt="logo" className={cx('logo')} />
+                    <Link to={config.routes.home} className={cx('logo')}>
+                        <img src={images.logo} alt="logo" />
                     </Link>
                     <button className={cx('button')} onClick={handleMenu}>
                         <CiViewList className={cx('icon')} />
@@ -126,7 +125,11 @@ function Header() {
                             Tra cứu <br /> đơn hàng
                         </div>
                     </button>
-                    <Link to={hasUser ? config.routes.cart : ''} onClick={!hasUser ? handleModal : ''} className={cx('button', 'bg-none')}>
+                    <Link
+                        to={hasUser ? config.routes.cart : ''}
+                        onClick={!hasUser ? handleModal : ''}
+                        className={cx('button', 'bg-none')}
+                    >
                         <BsBag className={cx('icon')} />
                         <div className={cx('content')}>
                             Giỏ <br /> hàng
@@ -170,16 +173,16 @@ function Header() {
                     )}
                 </div>
             </header>
-            {!!state.check.menu && <div className={cx('lable')} onClick={handleMenu}></div>}
+            {!!state.check.menu && <div className="lable" onClick={handleMenu}></div>}
             {!!state.check.local && (
                 <Fragment>
                     <Local />
-                    <div className={cx('lable')} onClick={handleLocal}></div>
+                    <div className="lable" onClick={handleLocal}></div>
                 </Fragment>
             )}
             {(!!state.check.search.result || !!state.check.search.suggest) && (
                 <div
-                    className={cx('lable')}
+                    className="lable"
                     onClick={() => {
                         dispatch(actions.setSearchValue(''));
                         dispatch(actions.setSearchResult(false));
@@ -207,10 +210,10 @@ function Header() {
                             <FaXmark />
                         </button>
                     </div>
-                    <div className={cx('lable')} onClick={handleModal}></div>
+                    <div className="lable" onClick={handleModal}></div>
                 </Fragment>
             )}
-            {!!state.check.noti && <div className={cx('lable')} onClick={handleModal}></div>}
+            {!!state.check.noti && <div className="lable" onClick={handleModal}></div>}
         </Fragment>
     );
 }

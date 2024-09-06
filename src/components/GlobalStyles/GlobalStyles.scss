@@ -24,10 +24,9 @@ html {
 
 body {
     font-family: var(--font-family);
+    color: var(--text-color);
     font-size: 1.6rem;
     line-height: 1.5;
-    text-rendering: optimizespeed;
-    color: var(--text-color);
     overflow-y: overlay;
 }
 
@@ -55,6 +54,22 @@ main {
     align-items: center;
     justify-content: center;
     border-radius: 8px;
+    padding: 5px 10px;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.lable {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(0, 0, 0, .5);
+    z-index: 10;
 }
 
 .is-flex {
@@ -77,5 +92,6 @@ main {
     justify-content: space-between !important;
 }
 
-
-
+header .swiper-button-disabled {
+    display: none;
+}
