@@ -17,8 +17,8 @@ import styles from './Header.module.scss';
 import images from '~/assets/images';
 import config from '~/config';
 import Search from './Search';
-import Menu from '~/layouts/components/Menu';
-import Local from '~/layouts/components/Local';
+import Menu from '~/components/Menu';
+import Local from '~/components/Local';
 import { useStore, actions } from '~/store';
 
 const cx = classNames.bind(styles);
